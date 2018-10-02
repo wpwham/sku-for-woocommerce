@@ -1,0 +1,308 @@
+#: sku-for-woocommerce.php:114
+msgid "Settings"
+msgstr ""
+
+#: sku-for-woocommerce.php:117
+msgid "Unlock all"
+msgstr ""
+
+#: includes/class-wc-sku.php:158
+msgid "SKUs generated and set successfully!"
+msgstr ""
+
+#: includes/class-wc-sku.php:172
+msgid "SKU Preview"
+msgstr ""
+
+#: includes/class-wc-sku.php:176
+msgid "Product ID"
+msgstr ""
+
+#: includes/class-wc-sku.php:177
+msgid "Title"
+msgstr ""
+
+#: includes/class-wc-sku.php:178
+msgid "First Category"
+msgstr ""
+
+#: includes/class-wc-sku.php:179
+msgid "First Tag"
+msgstr ""
+
+#: includes/class-wc-sku.php:180
+msgid "New SKU"
+msgstr ""
+
+#: includes/class-wc-sku.php:181
+msgid "Old SKU"
+msgstr ""
+
+#: includes/settings/class-wc-settings-sku.php:23
+msgid "SKU"
+msgstr ""
+
+#: includes/settings/class-wc-settings-sku.php:47
+msgid "Reset Settings"
+msgstr ""
+
+#: includes/settings/class-wc-settings-sku.php:52
+msgid "Reset section settings"
+msgstr ""
+
+#: includes/settings/class-wc-settings-sku.php:53
+msgid "Reset"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-categories.php:24
+msgid "Categories"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-categories.php:38
+msgid "Categories Options"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-categories.php:43
+#: includes/settings/class-wc-sku-settings-tags.php:43
+msgid "Enable/Disable"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-categories.php:44
+#: includes/settings/class-wc-sku-settings-tags.php:44
+msgid "Enable section"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-categories.php:50
+msgid "Sequential numbering on per category basis"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-categories.php:51
+#: includes/settings/class-wc-sku-settings-general.php:149
+#: includes/settings/class-wc-sku-settings-general.php:167
+#: includes/settings/class-wc-sku-settings-general.php:174
+msgid "Enable"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-categories.php:56
+#, php-format
+msgid ""
+"Get <a target=\"_blank\" href=\"%s\">SKU Generator for WooCommerce Pro</a> "
+"plugin to enable this option."
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-categories.php:69
+#: includes/settings/class-wc-sku-settings-general.php:86
+#: includes/settings/class-wc-sku-settings-tags.php:56
+msgid "Prefix"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-categories.php:74
+#: includes/settings/class-wc-sku-settings-categories.php:89
+#: includes/settings/class-wc-sku-settings-tags.php:61
+msgid "Get SKU Generator for WooCommerce Pro plugin to change value."
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-categories.php:78
+#: includes/settings/class-wc-sku-settings-general.php:98
+#: includes/settings/class-wc-sku-settings-tags.php:65
+msgid "Suffix"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-categories.php:84
+msgid "Counter"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:23
+msgid "General"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:36
+msgid "SKU Generator for WooCommerce Options"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:41
+msgid "SKU Generator for WooCommerce"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:42
+msgid "Enable plugin"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:43
+msgid "Add full SKU support to WooCommerce."
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:53
+msgid "SKU Format Options"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:54
+msgid "This section lets you set format for SKUs."
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:59
+msgid "Number generation"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:65
+msgid "From product ID"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:66
+msgid "Sequential"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:67
+msgid "Pseudorandom - Hash (max 10 digits)"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:69
+msgid "Possible values: from product ID, sequential or pseudorandom."
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:71
+#: includes/settings/class-wc-sku-settings-general.php:116
+#, php-format
+msgid ""
+"Get <a target=\"_blank\" href=\"%s\">SKU Generator for WooCommerce Pro</a> "
+"plugin to change value."
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:78
+msgid "Sequential number generation counter"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:82
+msgid "Ignored if \"Number Generation\" is not \"Sequential\"."
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:92
+msgid "Minimum number length"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:104
+msgid "Variable products variations"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:110
+msgid "SKU same as parent's product"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:111
+msgid "Generate different SKU for each variation"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:112
+msgid "SKU same as parent's product + variation letter suffix"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:114
+msgid ""
+"Possible values: SKU same as parent's product, generate different SKU for "
+"each variation or SKU same as parent's product + variation letter suffix."
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:123
+msgid "Template"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:124
+msgid "Replaced values:"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:130
+#, php-format
+msgid ""
+"To use any of %s or %s replaced values, corresponding section must be "
+"enabled."
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:143
+msgid "More Options"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:148
+msgid "Automatically generate SKU for new products"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:151
+#, php-format
+msgid ""
+"If enabled - all new products will automatically get SKU according to set "
+"format values. To change SKUs of existing products, use <a href=\"%s"
+"\">Regenerator tool</a>."
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:159
+msgid "Delay SKU generation till product is published"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:160
+msgid ""
+"Check this if you are using category/tag prefix/suffix for products SKU or "
+"individual SKUs for variations."
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:166
+msgid "Generate SKUs only for products with empty SKU"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:173
+msgid "Allow duplicate SKUs"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:180
+msgid "Search by SKU"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:181
+#: includes/settings/class-wc-sku-settings-general.php:200
+msgid "Add"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:182
+msgid "Add product searching by SKU on frontend."
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:188
+msgid "Search by SKU: Algorithm"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:189
+msgid ""
+"Change this if you are experiencing issues with search by SKU on frontend."
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-general.php:199
+msgid "Add SKU to customer emails"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-tags.php:24
+msgid "Tags"
+msgstr ""
+
+#: includes/settings/class-wc-sku-settings-tags.php:38
+msgid "Tags Options"
+msgstr ""
+
+#: includes/settings/class-wc-sku-tools-regenerator.php:23
+msgid "Regenerator Tool"
+msgstr ""
+
+#: includes/settings/class-wc-sku-tools-regenerator.php:34
+msgid "SKU Regenerator"
+msgstr ""
+
+#: includes/settings/class-wc-sku-tools-regenerator.php:40
+msgid "Generate SKU preview for all products"
+msgstr ""
+
+#: includes/settings/class-wc-sku-tools-regenerator.php:45
+msgid "Set SKUs for all products"
+msgstr ""
+
+#: includes/settings/class-wc-sku-tools-regenerator.php:50
+msgid ""
+"To use regenerator, SKU Generator for WooCommerce must be enabled in General "
+"settings tab."
+msgstr ""
