@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: SKU Generator for WooCommerce
-Plugin URI: https://wpfactory.com/item/sku-generator-for-woocommerce-plugin/
+Plugin URI: https://wpwham.com/products/sku-generator-for-woocommerce/
 Description: Add full SKU support to WooCommerce.
 Version: 1.2.5
 Author: WP Wham
-Author URI: https://www.wpwham.com
+Author URI: https://wpwham.com
 Text Domain: sku-for-woocommerce
 Domain Path: /langs
 Copyright: © 2018 WP Wham
@@ -113,7 +113,7 @@ final class Alg_WooCommerce_SKU {
 		$custom_links = array();
 		$custom_links[] = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_sku' ) . '">' . __( 'Settings', 'woocommerce' ) . '</a>';
 		if ( 'sku-for-woocommerce.php' === basename( __FILE__ ) ) {
-			$custom_links[] = '<a target="_blank" href="' . esc_url( 'https://wpfactory.com/item/sku-generator-for-woocommerce-plugin/' ) . '">' .
+			$custom_links[] = '<a target="_blank" href="' . esc_url( 'https://wpwham.com/products/sku-generator-for-woocommerce/' ) . '">' .
 				__( 'Unlock all', 'sku-for-woocommerce' ) . '</a>';
 		}
 		return array_merge( $custom_links, $links );

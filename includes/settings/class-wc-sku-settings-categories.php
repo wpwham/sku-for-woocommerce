@@ -54,7 +54,7 @@ class Alg_WC_SKU_Settings_Categories extends Alg_WC_SKU_Settings_Section {
 				'type'      => 'checkbox',
 				'desc_tip'  => apply_filters( 'alg_wc_sku_generator_option', sprintf(
 						__( 'Get <a target="_blank" href="%s">SKU Generator for WooCommerce Pro</a> plugin to enable this option.', 'sku-for-woocommerce' ),
-						'https://wpfactory.com/item/sku-generator-for-woocommerce-plugin/'
+						'https://wpwham.com/products/sku-generator-for-woocommerce/'
 					), 'settings'
 				),
 				'custom_attributes' => apply_filters( 'alg_wc_sku_generator_option', array( 'disabled' => 'disabled' ), 'settings' ),

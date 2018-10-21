@@ -24,7 +24,7 @@ Add full SKU support to WooCommerce:
 * Drop us a line at [www.wpwham.com](http://www.wpwham.com).
 
 = More =
-* Visit the [SKU Generator for WooCommerce plugin page](https://wpfactory.com/item/sku-generator-for-woocommerce-plugin/).
+* Visit the [SKU Generator for WooCommerce plugin page](https://wpwham.com/products/sku-generator-for-woocommerce/).
 
 == Installation ==
 
@@ -36,7 +36,7 @@ Add full SKU support to WooCommerce:
 
 = What options are in Pro version? =
 
-[SKU Generator for WooCommerce Pro](https://wpfactory.com/item/sku-generator-for-woocommerce-plugin/) includes options to generate SKUs sequentially or randomly. Also there are additional SKU format options for variable products.
+[SKU Generator for WooCommerce Pro](https://wpwham.com/products/sku-generator-for-woocommerce/) includes options to generate SKUs sequentially or randomly. Also there are additional SKU format options for variable products.
 
 == Screenshots ==
 
