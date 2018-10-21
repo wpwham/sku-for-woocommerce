@@ -3,7 +3,7 @@ Contributors: wpwham
 Tags: woocommerce, sku, stock keeping unit
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 1.2.5
+Stable tag: 1.3.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -48,18 +48,21 @@ Add full SKU support to WooCommerce:
 
 == Changelog ==
 
-= 1.2.5 - 20/09/2018 =
+= 1.3.0 - 2018-10-21 =
+* UPDATE: updated .pot file for translations
+
+= 1.2.5 - 2018-09-20 =
 * Dev - General - `{category_slug}`, `{category_name}`, `{tag_slug}` and `{tag_name}` replaced values added.
 * Dev - General - Template - Admin settings field now accepts "raw" input.
 * Dev - Tool - Minor restyling.
 
-= 1.2.4 - 10/09/2018 =
+= 1.2.4 - 2018-09-10 =
 * Dev - "Contributors" and "Author URI" updated.
 
-= 1.2.3 - 25/08/2018 =
+= 1.2.3 - 2018-08-25 =
 * Fix - `version_updated()` function fixed.
 
-= 1.2.2 - 23/08/2018 =
+= 1.2.2 - 2018-08-23 =
 * Fix - "Search by SKU" option fixed (and "Search by SKU: Algorithm" option added to "General > More Options > Search by SKU").
 * Dev - "Sequential numbering on per category basis" option added.
 * Dev - "WC tested up to" added to plugin header.
@@ -68,13 +71,13 @@ Add full SKU support to WooCommerce:
 * Dev - Admin settings restyled.
 * Dev - Plugin URI updated.
 
-= 1.2.1 - 06/12/2017 =
+= 1.2.1 - 2017-12-06 =
 * Dev - General - WooCommerce v3.2.0 compatibility - `select` type in admin settings fixed.
 * Dev - General - "Delay SKU generation till product is published" option added.
 * Dev - General - Admin settings minor restyling.
 * Dev - Saving settings array as main class property.
 
-= 1.2.0 - 18/04/2017 =
+= 1.2.0 - 2017-04-18 =
 * Dev - WooCommerce v3.0.0 compatibility - `get_child()` replaced with `wc_get_product()`.
 * Dev - "Template" option added.
 * Dev - "Pseudorandom - Hash (max 10 digits)" option added to "Number Generation".
@@ -91,29 +94,29 @@ Add full SKU support to WooCommerce:
 * Tweak - Default values added to all `get_option()` calls.
 * Tweak - Filter rewritten.
 
-= 1.1.3 - 21/12/2016 =
+= 1.1.3 - 2016-12-21 =
 * Fix - `load_plugin_textdomain()` moved from `init` hook to constructor.
 * Fix - Generating SKU on "duplicate product" action.
 * Dev - Language (POT) file updated.
 
-= 1.1.2 - 21/08/2016 =
+= 1.1.2 - 2016-08-21 =
 * Dev - "Allow duplicate SKUs" option added.
 * Dev - Version system added.
 * Tweak - Plugin renamed.
 * Tweak - Contributors changed.
 * Tweak - Option filter added.
 
-= 1.1.1 - 13/06/2016 =
+= 1.1.1 - 2016-06-13 =
 * Dev - `get_available_variations` replaced with `get_all_variations`.
 * Dev - SKU Regenerator tool - No auto preview after generation.
 
-= 1.1.0 - 10/06/2016 =
+= 1.1.0 - 2016-06-10 =
 * Dev - Sequential SKU number format option added.
 * Dev - Language (POT) file added.
 * Dev - Multisite support added.
 * Dev - Description added to "SKU Format Options".
 
-= 1.0.0 - 06/08/2015 =
+= 1.0.0 - 2015-08-06 =
 * Initial Release.
 
 == Upgrade Notice ==
