@@ -1,10 +1,24 @@
-#: sku-for-woocommerce.php:114
-msgid "Settings"
+#, fuzzy
+msgid ""
 msgstr ""
-
-#: sku-for-woocommerce.php:117
-msgid "Unlock all"
-msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: SKU Generator for WooCommerce\n"
+"POT-Creation-Date: 2018-10-21 00:35-0700\n"
+"PO-Revision-Date: 2018-10-21 00:35-0700\n"
+"Last-Translator: \n"
+"Language-Team: WP Wham <support@wpwham.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: sku-for-woocommerce.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
 
 #: includes/class-wc-sku.php:158
 msgid "SKUs generated and set successfully!"
@@ -120,6 +134,7 @@ msgstr ""
 msgid "SKU Generator for WooCommerce Options"
 msgstr ""
 
+#. Plugin Name of the plugin/theme
 #: includes/settings/class-wc-sku-settings-general.php:41
 msgid "SKU Generator for WooCommerce"
 msgstr ""
@@ -128,6 +143,7 @@ msgstr ""
 msgid "Enable plugin"
 msgstr ""
 
+#. Description of the plugin/theme
 #: includes/settings/class-wc-sku-settings-general.php:43
 msgid "Add full SKU support to WooCommerce."
 msgstr ""
@@ -305,4 +321,24 @@ msgstr ""
 msgid ""
 "To use regenerator, SKU Generator for WooCommerce must be enabled in General "
 "settings tab."
+msgstr ""
+
+#: sku-for-woocommerce.php:114
+msgid "Settings"
+msgstr ""
+
+#: sku-for-woocommerce.php:117
+msgid "Unlock all"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://wpwham.com/products/sku-generator-for-woocommerce/"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WP Wham"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://wpwham.com"
 msgstr ""
