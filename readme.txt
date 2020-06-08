@@ -2,8 +2,8 @@
 Contributors: wpwham
 Tags: woocommerce, sku, stock keeping unit
 Requires at least: 4.4
-Tested up to: 5.3
-Stable tag: 1.3.3
+Tested up to: 5.4
+Stable tag: 1.4.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,6 +47,13 @@ Add full SKU support to WooCommerce:
 5. SKU Generator for WooCommerce - SKU Regenerator Tool.
 
 == Changelog ==
+
+= 1.4.0 - 2020-06-08 =
+* NEW: add "Generate SKUs for Variations" option to variations bulk action dropdown.
+* NEW: allow forcing uppercase letters in SKU templates.
+* FIX: show correct "old SKU" for variations in bulk regenerator tool preview.
+* UPDATE: reorder columns in previews (show Old SKU on the left, New SKU on the right).
+* UPDATE: updated .pot file for translations.
 
 = 1.3.3 - 2019-12-17 =
 * UPDATE: bump tested versions

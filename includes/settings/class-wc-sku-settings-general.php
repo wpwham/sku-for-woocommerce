@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce - General Section Settings
  *
- * @version 1.2.5
+ * @version 1.4.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  */

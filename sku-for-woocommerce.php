@@ -3,13 +3,13 @@
 Plugin Name: SKU Generator for WooCommerce
 Plugin URI: https://wpwham.com/products/sku-generator-for-woocommerce/
 Description: Add full SKU support to WooCommerce.
-Version: 1.3.3
+Version: 1.4.0
 Author: WP Wham
 Author URI: https://wpwham.com
 Text Domain: sku-for-woocommerce
 Domain Path: /langs
-Copyright: © 2018-2019 WP Wham
-WC tested up to: 3.8
+Copyright: © 2020 WP Wham
+WC tested up to: 4.2
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
@@ -53,7 +53,7 @@ final class Alg_WooCommerce_SKU {
 	 * @var   string
 	 * @since 1.1.2
 	 */
-	public $version = '1.3.3';
+	public $version = '1.4.0';
 
 	/**
 	 * @var Alg_WooCommerce_SKU The single instance of the class
