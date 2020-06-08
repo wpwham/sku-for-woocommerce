@@ -44,6 +44,9 @@ class Alg_WC_SKU {
 			if ( 'yes' === get_option( 'alg_sku_add_to_customer_emails', 'no' ) ) {
 				add_filter( 'woocommerce_email_order_items_args', array( $this, 'add_sku_to_customer_emails' ), PHP_INT_MAX, 1 );
 			}
+			// SKU variations bulk action
+			add_action( 'woocommerce_variable_product_bulk_edit_actions', array( $this, 'add_variations_bulk_action_option' ) );
+			add_action( 'woocommerce_bulk_edit_variations', array( $this, 'regenerate_tool_set_variations_skus' ), 10, 4 );
 		}
 	}
 
@@ -94,6 +97,22 @@ class Alg_WC_SKU {
 	function add_sku_to_customer_emails( $args ) {
 		$args['show_sku'] = true;
 		return $args;
+	}
+	
+	/**
+	 * Adds "Generate SKUs for Variations" option to variations bulk action dropdown.
+	 *
+	 * @since  1.4.0
+	 * @author David Grant
+	 */
+	public function add_variations_bulk_action_option() {
+		#region add_variations_bulk_action_option
+		?>		
+		<optgroup label="<?php esc_attr_e( 'SKUs', 'sku-for-woocommerce' ); ?>">
+			<option value="wpw_sku_generator_set_variations_skus"><?php esc_html_e( 'Generate SKUs for Variations', 'sku-for-woocommerce' ); ?></option>
+		</optgroup>
+		<?php
+		#endregion add_variations_bulk_action_option
 	}
 
 	/**
@@ -177,14 +196,30 @@ class Alg_WC_SKU {
 			'<th>' . __( 'Title', 'sku-for-woocommerce' )          . '</th>' .
 			( 'yes' === get_option( 'alg_sku_categories_enabled', 'no' ) ? '<th>' . __( 'First Category', 'sku-for-woocommerce' ) . '</th>' : '' ) .
 			( 'yes' === get_option( 'alg_sku_tags_enabled',       'no' ) ? '<th>' . __( 'First Tag', 'sku-for-woocommerce' )      . '</th>' : '' ) .
-			'<th>' . __( 'New SKU', 'sku-for-woocommerce' )        . '</th>' .
 			'<th>' . __( 'Old SKU', 'sku-for-woocommerce' )        . '</th>' .
+			'<th>' . __( 'New SKU', 'sku-for-woocommerce' )        . '</th>' .
 		'</tr>';
 		ob_start();
 		$this->set_all_sku( true );
 		$preview_html .= ob_get_clean();
 		$preview_html .= '</table>';
 		echo $preview_html;
+	}
+	
+	/**
+	 * Handle AJAX request to bulk set variations SKUs
+	 *
+	 * @since  1.4.0
+	 * @author David Grant
+	 */
+	public function regenerate_tool_set_variations_skus( $bulk_action, $data, $product_id, $variations ) {
+		if ( $bulk_action !== 'wpw_sku_generator_set_variations_skus' ) {
+			return;
+		}
+		if ( ! $product_id ) {
+			return;
+		}
+		$this->set_variations_skus_by_product_id( $product_id );
 	}
 
 	/**
@@ -256,6 +291,38 @@ class Alg_WC_SKU {
 			$offset += $limit;
 		}
 		$this->maybe_update_sequential_counter( $is_preview );
+	}
+	
+	/**
+	 * Set Variations SKUs by product ID
+	 *
+	 * @since  1.4.0
+	 * @author David Grant
+	 */
+	public function set_variations_skus_by_product_id( $product_id, $is_preview = false ) {
+		$this->maybe_load_sequential_counter();
+		// semi-silly solution to force us to only append the suffix, don't reparse (and thereby duplicate) the rest of it
+		add_filter( 'option_alg_sku_for_woocommerce_template', array( $this, 'set_variations_skus_by_product_id_filter' ) );
+		$this->set_sku_with_variable( $product_id, $is_preview, false );
+		$this->maybe_update_sequential_counter( $is_preview );
+	}
+	
+	/**
+	 * set_variations_skus_by_product_id_filter
+	 *
+	 * @since  1.4.0
+	 * @author David Grant
+	 */
+	public function set_variations_skus_by_product_id_filter( $template ) {
+		$variation_handling = apply_filters( 'alg_wc_sku_generator_option', 'as_variable', 'variations_handling' );
+		if ( in_array( $variation_handling, array( 'as_variable', 'as_variable_with_suffix' ) ) ) {
+			$template = str_ireplace( 
+				array( '{category_prefix}', '{category_suffix}', '{category_slug}', '{category_name}', '{tag_prefix}', '{tag_suffix}', '{tag_slug}', '{tag_name}', '{prefix}', '{suffix}' ), // remove everything except {variation_suffix}, {sku_number}
+				'',
+				$template
+			);
+		}
+		return $template;
 	}
 
 	/**
@@ -338,26 +405,33 @@ class Alg_WC_SKU {
 	/**
 	 * set_sku_with_variable.
 	 *
-	 * @version 1.2.2
-	 * @todo    [fix] `as_variable_with_suffix` - handle cases with more than 26 variations
+	 * @version 1.4.0
+	 * @author  Algoritmika Ltd.
+	 * @author  David Grant
 	 */
-	function set_sku_with_variable( $product_id, $is_preview ) {
-		$product = wc_get_product( $product_id );
-		if ( 'sequential' === apply_filters( 'alg_wc_sku_generator_option', 'product_id', 'number_generation' ) ) {
-			$sku_number = $this->get_and_icrease_sequential_counter( $product_id );
-		} elseif ( 'hash_crc32' === apply_filters( 'alg_wc_sku_generator_option', 'product_id', 'number_generation' ) ) {
-			$sku_number = sprintf( "%u", crc32( $product_id ) );
-		} else { // if 'product_id'
-			$sku_number = $product_id;
+	public function set_sku_with_variable( $product_id, $is_preview, $overwrite_existing_sku = true ) {
+		
+		$product    = wc_get_product( $product_id );
+		$sku_number = $product->get_sku();
+		
+		if ( $overwrite_existing_sku || $sku_number === '' ) {
+			if ( 'sequential' === apply_filters( 'alg_wc_sku_generator_option', 'product_id', 'number_generation' ) ) {
+				$sku_number = $this->get_and_icrease_sequential_counter( $product_id );
+			} elseif ( 'hash_crc32' === apply_filters( 'alg_wc_sku_generator_option', 'product_id', 'number_generation' ) ) {
+				$sku_number = sprintf( "%u", crc32( $product_id ) );
+			} else { // if 'product_id'
+				$sku_number = $product_id;
+			}
+			$this->set_sku( $product_id, $sku_number, '', $is_preview, $product_id, $product );
 		}
-		$this->set_sku( $product_id, $sku_number, '', $is_preview, $product_id, $product );
+		
 		// Handling variable products
 		$variation_handling = apply_filters( 'alg_wc_sku_generator_option', 'as_variable', 'variations_handling' );
 		if ( $product->is_type( 'variable' ) ) {
 			$variations = $this->get_all_variations( $product );
 			if ( 'as_variable' === $variation_handling ) {
 				foreach( $variations as $variation ) {
-					$this->set_sku( $variation['variation_id'], $sku_number, '', $is_preview, $product_id, $product );
+					$this->set_sku( $variation['variation_id'], $sku_number, '', $is_preview, $product_id, new WC_Product_Variation( $variation['variation_id'] ) );
 				}
 			} elseif ( 'as_variation' === $variation_handling ) {
 				foreach( $variations as $variation ) {
@@ -368,16 +442,24 @@ class Alg_WC_SKU {
 					} else { // if 'product_id'
 						$sku_number = $variation['variation_id'];
 					}
-					$this->set_sku( $variation['variation_id'], $sku_number, '', $is_preview, $product_id, $product );
+					$this->set_sku( $variation['variation_id'], $sku_number, '', $is_preview, $product_id, new WC_Product_Variation( $variation['variation_id'] ) );
 				}
 			} elseif ( 'as_variable_with_suffix' === $variation_handling ) {
-				$variation_suffixes = 'abcdefghijklmnopqrstuvwxyz';
-				$abc = 0;
-				foreach( $variations as $variation ) {
-					$this->set_sku( $variation['variation_id'], $sku_number, $variation_suffixes[ $abc++ ], $is_preview, $product_id, $product );
-					if ( 26 == $abc ) {
-						$abc = 0;
+				$variation_suffix_type = get_option( 'wpw_sku_generator_variation_suffix', 'letters' );
+				$count = 0;
+				foreach ( $variations as $variation ) {
+					if ( $variation_suffix_type === 'numbers' ) {
+						// numbers
+						$variation_suffix = sprintf( '%0' . get_option( 'wpw_sku_generator_variation_suffix_minimum_number_length', 0 ) . 's', $count + 1 );
+					} else {
+						// letters
+						$n = $count;
+						for ( $variation_suffix = ""; $n >= 0; $n = intval( $n / 26 ) - 1 ) {
+							$variation_suffix = chr( $n % 26 + 0x61 ) . $variation_suffix;
+						}
 					}
+					$this->set_sku( $variation['variation_id'], $sku_number, $variation_suffix, $is_preview, $product_id, new WC_Product_Variation( $variation['variation_id'] ) );
+					$count++;
 				}
 			}
 		}
@@ -442,6 +524,18 @@ class Alg_WC_SKU {
 			'{category_name}'    => $product_cat,
 			'{tag_slug}'         => $tag_slug,
 			'{tag_name}'         => $product_tag,
+			'{CATEGORY_PREFIX}'  => strtoupper( $category_prefix ),
+			'{TAG_PREFIX}'       => strtoupper( $tag_prefix ),
+			'{PREFIX}'           => strtoupper( get_option( 'alg_sku_for_woocommerce_prefix', '' ) ),
+			'{SKU_NUMBER}'       => strtoupper( sprintf( '%0' . get_option( 'alg_sku_for_woocommerce_minimum_number_length', 0 ) . 's', $sku_number ) ),
+			'{SUFFIX}'           => strtoupper( get_option( 'alg_sku_for_woocommerce_suffix', '' ) ),
+			'{TAG_SUFFIX}'       => strtoupper( $tag_suffix ),
+			'{CATEGORY_SUFFIX}'  => strtoupper( $category_suffix ),
+			'{VARIATION_SUFFIX}' => strtoupper( $variation_suffix ),
+			'{CATEGORY_SLUG}'    => strtoupper( $category_slug ),
+			'{CATEGORY_NAME}'    => strtoupper( $product_cat ),
+			'{TAG_SLUG}'         => strtoupper( $tag_slug ),
+			'{TAG_NAME}'         => strtoupper( $product_tag ),
 		);
 		$the_sku = ( $do_generate_new_sku ) ? str_replace( array_keys( $replace_values ), array_values( $replace_values ), $format_template ) : $old_sku;
 		// Preview or set
@@ -452,8 +546,8 @@ class Alg_WC_SKU {
 				'<td>' . get_the_title( $product_id ) . '</td>' .
 				( 'yes' === get_option( 'alg_sku_categories_enabled', 'no' ) ? '<td>' . $product_cat . '</td>' : '' ) .
 				( 'yes' === get_option( 'alg_sku_tags_enabled', 'no' )       ? '<td>' . $product_tag . '</td>' : '' ) .
-				'<td>' . $the_sku                     . '</td>' .
 				'<td>' . $old_sku                     . '</td>' .
+				'<td>' . $the_sku                     . '</td>' .
 			'</tr>';
 		} elseif ( $do_generate_new_sku ) {
 			update_post_meta( $product_id, '_' . 'sku', $the_sku );

@@ -63,12 +63,10 @@ class Alg_WC_SKU_Settings_General extends Alg_WC_SKU_Settings_Section {
 				'class'     => 'wc-enhanced-select',
 				'options'   => array(
 					'product_id' => __( 'From product ID', 'sku-for-woocommerce' ),
-					'sequential' => __( 'Sequential', 'sku-for-woocommerce' ),
-					'hash_crc32' => __( 'Pseudorandom - Hash (max 10 digits)', 'sku-for-woocommerce' ),
 				),
 				'desc_tip'  => __( 'Possible values: from product ID, sequential or pseudorandom.', 'sku-for-woocommerce' ),
 				'desc'      => apply_filters( 'alg_wc_sku_generator_option', sprintf(
-						__( 'Get <a target="_blank" href="%s">SKU Generator for WooCommerce Pro</a> plugin to change value.', 'sku-for-woocommerce' ),
+						__( 'Get <a target="_blank" href="%s">SKU Generator for WooCommerce Pro</a> to add even more options.', 'sku-for-woocommerce' ),
 						'https://wpwham.com/products/sku-generator-for-woocommerce/'
 					), 'settings'
 				),
@@ -108,12 +106,10 @@ class Alg_WC_SKU_Settings_General extends Alg_WC_SKU_Settings_Section {
 				'class'     => 'wc-enhanced-select',
 				'options'   => array(
 					'as_variable'             => __( 'SKU same as parent\'s product', 'sku-for-woocommerce' ),
-					'as_variation'            => __( 'Generate different SKU for each variation', 'sku-for-woocommerce' ),
-					'as_variable_with_suffix' => __( 'SKU same as parent\'s product + variation letter suffix', 'sku-for-woocommerce' ),
 				),
-				'desc_tip'  => __( 'Possible values: SKU same as parent\'s product, generate different SKU for each variation or SKU same as parent\'s product + variation letter suffix.', 'sku-for-woocommerce' ),
+				'desc_tip'  => __( 'Possible values: SKU same as parent\'s product, generate different SKU for each variation or SKU same as parent\'s product + variation suffix.', 'sku-for-woocommerce' ),
 				'desc'      => apply_filters( 'alg_wc_sku_generator_option', sprintf(
-						__( 'Get <a target="_blank" href="%s">SKU Generator for WooCommerce Pro</a> plugin to change value.', 'sku-for-woocommerce' ),
+						__( 'Get <a target="_blank" href="%s">SKU Generator for WooCommerce Pro</a> to add even more options.', 'sku-for-woocommerce' ),
 						'https://wpwham.com/products/sku-generator-for-woocommerce/'
 					), 'settings'
 				),
@@ -127,7 +123,9 @@ class Alg_WC_SKU_Settings_General extends Alg_WC_SKU_Settings_Section {
 							'{category_prefix}', '{category_suffix}', '{category_slug}', '{category_name}',
 							'{tag_prefix}', '{tag_suffix}', '{tag_slug}', '{tag_name}',
 							'{prefix}', '{suffix}', '{variation_suffix}', '{sku_number}' )
-					) . '</code>.' . '<br>* ' . sprintf( __( 'To use any of %s or %s replaced values, corresponding section must be enabled.', 'sku-for-woocommerce' ),
+					) . '</code>.'
+					. '<br />' . sprintf( __( 'To force uppercase letters, enter any tag in all uppercase.  For example: %s', 'sku-for-woocommerce' ), '<code>{VARIATION_SUFFIX}</code>' )
+					. '<br>* ' . sprintf( __( 'To use any of %s or %s replaced values, corresponding section must be enabled.', 'sku-for-woocommerce' ),
 						'<code>{category_...}</code>', '<code>{tag_...}</code>' ),
 				'id'        => 'alg_sku_for_woocommerce_template',
 				'default'   => '{category_prefix}{tag_prefix}{prefix}{sku_number}{suffix}{tag_suffix}{category_suffix}{variation_suffix}',
