@@ -91,13 +91,17 @@ final class Alg_WooCommerce_SKU {
 
 		// Admin
 		if ( is_admin() ) {
+		
 			add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_woocommerce_settings_tab' ) );
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
 			$this->add_settings();
+			add_action( 'woocommerce_system_status_report', array( $this, 'add_settings_to_status_report' ) );
+			
 			// Version updated
 			if ( get_option( 'alg_sku_generator_version', '' ) !== $this->version ) {
 				add_action( 'admin_init', array( $this, 'version_updated' ) );
 			}
+			
 		}
 
 	}
@@ -142,6 +146,57 @@ final class Alg_WooCommerce_SKU {
 		$this->settings['categories'] = require_once( 'includes/settings/class-wc-sku-settings-categories.php' );
 		$this->settings['tags']       = require_once( 'includes/settings/class-wc-sku-settings-tags.php' );
 		require_once( 'includes/settings/class-wc-sku-tools-regenerator.php' );
+	}
+
+	/**
+	 * add settings to WC status report
+	 *
+	 * @version 1.4.1
+	 * @since   1.4.1
+	 * @author  WP Wham
+	 */
+	public static function add_settings_to_status_report() {
+		#region add_settings_to_status_report
+		$protected_settings  = array( 'wpwham_sku_generator_license' );
+		$settings_general    = Alg_WC_SKU_Settings_General::get_settings();
+		$settings_categories = Alg_WC_SKU_Settings_Categories::get_settings();
+		$settings_tags       = Alg_WC_SKU_Settings_Tags::get_settings();
+		$settings            = array_merge( $settings_general, $settings_categories, $settings_tags );
+		?>
+		<table class="wc_status_table widefat" cellspacing="0">
+			<thead>
+				<tr>
+					<th colspan="3" data-export-label="SKU Generator Settings"><h2><?php esc_html_e( 'SKU Generator Settings', 'sku-for-woocommerce' ); ?></h2></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ( $settings as $setting ): ?>
+				<?php 
+				if ( in_array( $setting['type'], array( 'title', 'sectionend' ) ) ) { 
+					continue;
+				}
+				if ( isset( $setting['title'] ) ) {
+					$title = $setting['title'];
+				} elseif ( isset( $setting['desc'] ) ) {
+					$title = $setting['desc'];
+				} else {
+					$title = $setting['id'];
+				}
+				$value = get_option( $setting['id'] ); 
+				if ( in_array( $setting['id'], $protected_settings ) ) {
+					$value = $value > '' ? '(set)' : 'not set';
+				}
+				?>
+				<tr>
+					<td data-export-label="<?php echo esc_attr( $title ); ?>"><?php esc_html_e( $title, 'sku-for-woocommerce' ); ?>:</td>
+					<td class="help">&nbsp;</td>
+					<td><?php echo is_array( $value ) ? print_r( $value, true ) : $value; ?></td>
+				</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+		<?php
+		#endregion add_settings_to_status_report
 	}
 
 	/**

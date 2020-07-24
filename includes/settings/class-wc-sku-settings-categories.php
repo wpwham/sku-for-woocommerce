@@ -31,7 +31,7 @@ class Alg_WC_SKU_Settings_Categories extends Alg_WC_SKU_Settings_Section {
 	 * @version 1.2.2
 	 * @since   1.2.0
 	 */
-	function get_settings() {
+	public static function get_settings() {
 		$settings = array();
 		$settings = array_merge( $settings, array(
 			array(

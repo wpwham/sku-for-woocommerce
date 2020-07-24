@@ -30,7 +30,7 @@ class Alg_WC_SKU_Settings_General extends Alg_WC_SKU_Settings_Section {
 	 * @version 1.2.5
 	 * @todo    [dev] (maybe) "SKU Format Options" etc. to separate section (and then also add "Dashboard" subsection)
 	 */
-	function get_settings() {
+	public static function get_settings() {
 		$settings = array(
 			array(
 				'title'     => __( 'SKU Generator for WooCommerce Options', 'sku-for-woocommerce' ),
