@@ -472,7 +472,9 @@ class Alg_WC_SKU {
 	 */
 	function set_sku( $product_id, $sku_number, $variation_suffix, $is_preview, $parent_product_id, $_product ) {
 		// Do generate new SKU
-		$old_sku = $_product->get_sku();
+		// $_product->get_sku() is not reliable because get_sku() on a variation without a SKU will actually return
+		// the SKU of the parent intsead.  So we have to check the postmeta directly:
+		$old_sku = get_post_meta( $product_id, '_sku', true );
 		$do_generate_new_sku = ( 'no' === get_option( 'alg_sku_generate_only_for_empty_sku', 'no' ) || '' === $old_sku );
 		// Categories
 		$category_prefix = '';
