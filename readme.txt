@@ -3,7 +3,7 @@ Contributors: wpwham
 Tags: woocommerce, sku, stock keeping unit
 Requires at least: 4.4
 Tested up to: 5.5
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,6 +47,9 @@ Add full SKU support to WooCommerce:
 5. SKU Generator for WooCommerce - SKU Regenerator Tool.
 
 == Changelog ==
+
+= 1.4.2 - 2020-08-25 =
+* UPDATE: bump tested versions
 
 = 1.4.1 - 2020-07-24 =
 * FIX: issue with variations always being assigned same SKU as parent product, when inserting new product.
