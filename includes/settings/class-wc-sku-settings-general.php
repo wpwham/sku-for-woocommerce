@@ -125,9 +125,11 @@ class Alg_WC_SKU_Settings_General extends Alg_WC_SKU_Settings_Section {
 							'{tag_prefix}', '{tag_suffix}', '{tag_slug}', '{tag_name}',
 							'{prefix}', '{suffix}', '{variation_suffix}', '{sku_number}' )
 					) . '</code>.'
-					. '<br />' . sprintf( __( 'To force uppercase letters, enter any tag in all uppercase.  For example: %s', 'sku-for-woocommerce' ), '<code>{VARIATION_SUFFIX}</code>' )
-					. '<br>* ' . sprintf( __( 'To use any of %s or %s replaced values, corresponding section must be enabled.', 'sku-for-woocommerce' ),
-						'<code>{category_...}</code>', '<code>{tag_...}</code>' ),
+					. '<br />' . sprintf( __( 'To force uppercase letters, enter any tag in all uppercase.  For example: %s', 'sku-for-woocommerce' ), '<code>{SUFFIX}</code>' )
+					. '<br>* ' . sprintf( __( 'To use any of %s, %s, or %s replaced values, corresponding section must be enabled.', 'sku-for-woocommerce' ),
+						'<code>{variation_suffix}</code>',
+						'<code>{category_...}</code>',
+						'<code>{tag_...}</code>' ),
 				'id'        => 'alg_sku_for_woocommerce_template',
 				'default'   => '{category_prefix}{tag_prefix}{prefix}{sku_number}{suffix}{tag_suffix}{category_suffix}{variation_suffix}',
 				'type'      => 'text',
