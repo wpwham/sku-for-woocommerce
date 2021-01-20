@@ -477,29 +477,36 @@ class Alg_WC_SKU {
 	 *
 	 * @version 1.2.5
 	 */
-	function set_sku( $product_id, $sku_number, $variation_suffix, $is_preview, $parent_product_id, $_product ) {
+	public function set_sku( $product_id, $sku_number, $variation_suffix, $is_preview, $parent_product_id, $_product ) {
+		
 		// Do generate new SKU
 		// $_product->get_sku() is not reliable because get_sku() on a variation without a SKU will actually return
-		// the SKU of the parent intsead.  So we have to check the postmeta directly:
+		// the SKU of the parent instead.  So we have to check the postmeta directly:
 		$old_sku = get_post_meta( $product_id, '_sku', true );
 		$do_generate_new_sku = ( 'no' === get_option( 'alg_sku_generate_only_for_empty_sku', 'no' ) || '' === $old_sku );
+		
 		// Categories
 		$category_prefix = '';
 		$category_suffix = '';
 		$category_slug   = '';
 		$product_cat     = '';
-		if ( 'yes' === get_option( 'alg_sku_categories_enabled', 'no' ) ) {
+		if ( get_option( 'alg_sku_categories_enabled', 'no' ) === 'yes' ) {
+			$term = false;
 			$product_terms = get_the_terms( $parent_product_id, 'product_cat' );
 			if ( is_array( $product_terms ) ) {
-				foreach ( $product_terms as $term ) {
-					$product_cat     = esc_html( $term->name );
-					$category_slug   = esc_html( $term->slug );
-					$category_prefix = apply_filters( 'alg_wc_sku_generator_option', '', 'category_prefix', array( 'term_id' => $term->term_id ) );
-					$category_suffix = get_option( 'alg_sku_suffix_cat_' . $term->term_id, '' );
+				foreach ( $product_terms as $product_term ) {
+					$term = $product_term;
 					break;
 				}
 			}
+			if ( $term instanceof WP_Term ) {
+				$product_cat     = esc_html( $term->name );
+				$category_slug   = esc_html( $term->slug );
+				$category_prefix = apply_filters( 'alg_wc_sku_generator_option', '', 'category_prefix', array( 'term_id' => $term->term_id ) );
+				$category_suffix = get_option( 'alg_sku_suffix_cat_' . $term->term_id, '' );
+			}
 		}
+		
 		// Tags
 		$tag_prefix  = '';
 		$tag_suffix  = '';
@@ -517,6 +524,7 @@ class Alg_WC_SKU {
 				}
 			}
 		}
+		
 		// Format SKU
 		$format_template = get_option( 'alg_sku_for_woocommerce_template',
 			'{category_prefix}{tag_prefix}{prefix}{sku_number}{suffix}{tag_suffix}{category_suffix}{variation_suffix}' );
@@ -547,6 +555,7 @@ class Alg_WC_SKU {
 			'{TAG_NAME}'         => strtoupper( $product_tag ),
 		);
 		$the_sku = ( $do_generate_new_sku ) ? str_replace( array_keys( $replace_values ), array_values( $replace_values ), $format_template ) : $old_sku;
+		
 		// Preview or set
 		if ( $is_preview ) {
 			echo '<tr>' .
