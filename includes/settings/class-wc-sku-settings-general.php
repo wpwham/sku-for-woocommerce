@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce - General Section Settings
  *
- * @version 1.4.1
+ * @version 1.5.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -28,7 +28,7 @@ class Alg_WC_SKU_Settings_General extends Alg_WC_SKU_Settings_Section {
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.4.1
+	 * @version 1.5.0
 	 * @todo    [dev] (maybe) "SKU Format Options" etc. to separate section (and then also add "Dashboard" subsection)
 	 */
 	public static function get_settings() {

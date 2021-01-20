@@ -1,9 +1,9 @@
 === SKU Generator for WooCommerce ===
 Contributors: wpwham
-Tags: woocommerce, sku, stock keeping unit
+Tags: woocommerce, sku, stock keeping unit, generate sku, generate
 Requires at least: 4.4
-Tested up to: 5.5
-Stable tag: 1.4.3
+Tested up to: 5.6
+Stable tag: 1.5.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,6 +47,13 @@ Add full SKU support to WooCommerce:
 5. SKU Generator for WooCommerce - SKU Regenerator Tool.
 
 == Changelog ==
+
+= 1.5.0 - 2021-01-20 =
+* NEW: (premium version only) add support for Yoast primary categories.
+* NEW: (premium version only) add product attributes as option for variation suffix (thanks to Joseph VanTine).
+* FIX: issues when using Search by SKU "pre_get_posts" algorithm.
+* FIX: minor display bug on settings page, also clarify settings page wording a little.
+* UPDATE: updated .pot file for translations.
 
 = 1.4.3 - 2020-09-17 =
 * UPDATE: bump tested versions

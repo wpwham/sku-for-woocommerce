@@ -2,9 +2,10 @@
 /**
  * SKU for WooCommerce
  *
- * @version 1.4.0
+ * @version 1.5.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
+ * @author  WP Wham
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -118,7 +119,7 @@ class Alg_WC_SKU {
 	/**
 	 * search_post_join.
 	 *
-	 * @version 1.2.0
+	 * @version 1.5.0
 	 * @since   1.2.0
 	 */
 	function search_post_join( $join = '' ) {
@@ -133,7 +134,7 @@ class Alg_WC_SKU {
 	/**
 	 * search_post_where.
 	 *
-	 * @version 1.2.0
+	 * @version 1.5.0
 	 * @since   1.2.0
 	 */
 	function search_post_where( $where = '' ) {
@@ -475,7 +476,7 @@ class Alg_WC_SKU {
 	/**
 	 * set_sku.
 	 *
-	 * @version 1.2.5
+	 * @version 1.5.0
 	 */
 	public function set_sku( $product_id, $sku_number, $variation_suffix, $is_preview, $parent_product_id, $_product ) {
 		
