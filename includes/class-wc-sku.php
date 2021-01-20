@@ -122,11 +122,11 @@ class Alg_WC_SKU {
 	 * @since   1.2.0
 	 */
 	function search_post_join( $join = '' ) {
-		global $wp_the_query;
+		global $wpdb, $wp_the_query;
 		if ( empty( $wp_the_query->query_vars['wc_query'] ) || empty( $wp_the_query->query_vars['s'] ) ) {
 			return $join;
 		}
-		$join .= "INNER JOIN wp_postmeta AS alg_sku ON (wp_posts.ID = alg_sku.post_id)";
+		$join .= "INNER JOIN {$wpdb->postmeta} AS alg_sku ON ({$wpdb->posts}.ID = alg_sku.post_id)";
 		return $join;
 	}
 
