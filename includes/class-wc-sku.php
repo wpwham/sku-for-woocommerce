@@ -137,11 +137,18 @@ class Alg_WC_SKU {
 	 * @since   1.2.0
 	 */
 	function search_post_where( $where = '' ) {
-		global $wp_the_query;
+		global $wpdb, $wp_the_query, $wp_version;
 		if ( empty( $wp_the_query->query_vars['wc_query'] ) || empty( $wp_the_query->query_vars['s'] ) ) {
 			return $where;
 		}
+		if ( version_compare( $wp_version, '4.8.3', '>=' ) ) {
+			// see https://make.wordpress.org/core/2017/10/31/changed-behaviour-of-esc_sql-in-wordpress-4-8-3/
+			$where = $wpdb->remove_placeholder_escape( $where );
+		}
 		$where = preg_replace( "/post_title LIKE ('%[^%]+%')/", "post_title LIKE $1) OR (alg_sku.meta_key = '_sku' AND CAST(alg_sku.meta_value AS CHAR) LIKE $1 ", $where );
+		if ( version_compare( $wp_version, '4.8.3', '>=' ) ) {
+			$where = $wpdb->prepare( $where );
+		}
 		return $where;
 	}
 
