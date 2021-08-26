@@ -555,6 +555,14 @@ class Alg_WC_SKU {
 			'{TAG_SLUG}'         => strtoupper( $tag_slug ),
 			'{TAG_NAME}'         => strtoupper( $product_tag ),
 		);
+		
+		// The filter
+		$replace_values = apply_filters(
+			'wpwham_sku_sku_template_variables',
+			$replace_values, $product_id, $sku_number, $variation_suffix, $is_preview, $parent_product_id, $_product
+		);
+		
+		// Put it all together
 		$the_sku = ( $do_generate_new_sku ) ? str_replace( array_keys( $replace_values ), array_values( $replace_values ), $format_template ) : $old_sku;
 		
 		// Preview or set
