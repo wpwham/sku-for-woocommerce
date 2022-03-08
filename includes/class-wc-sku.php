@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce
  *
- * @version 1.5.0
+ * @version 1.6.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -476,7 +476,8 @@ class Alg_WC_SKU {
 	/**
 	 * set_sku.
 	 *
-	 * @version 1.5.0
+	 * @version 1.6.0
+	 * @since   1.0.0
 	 */
 	public function set_sku( $product_id, $sku_number, $variation_suffix, $is_preview, $parent_product_id, $_product ) {
 		
@@ -555,6 +556,14 @@ class Alg_WC_SKU {
 			'{TAG_SLUG}'         => strtoupper( $tag_slug ),
 			'{TAG_NAME}'         => strtoupper( $product_tag ),
 		);
+		
+		// The filter
+		$replace_values = apply_filters(
+			'wpwham_sku_sku_template_variables',
+			$replace_values, $product_id, $sku_number, $variation_suffix, $is_preview, $parent_product_id, $_product
+		);
+		
+		// Put it all together
 		$the_sku = ( $do_generate_new_sku ) ? str_replace( array_keys( $replace_values ), array_values( $replace_values ), $format_template ) : $old_sku;
 		
 		// Preview or set
