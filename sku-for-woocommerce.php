@@ -37,6 +37,10 @@ if ( 'sku-for-woocommerce.php' === basename( __FILE__ ) ) {
 	}
 }
 
+if ( ! defined( 'WPWHAM_SKU_GENERATOR_VERSION' ) ) {
+	define( 'WPWHAM_SKU_GENERATOR_VERSION', '1.5.1' );
+}
+
 if ( ! class_exists( 'Alg_WooCommerce_SKU' ) ) :
 
 /**

@@ -41,7 +41,11 @@ class Alg_WC_SKU_Settings_General extends Alg_WC_SKU_Settings_Section {
 			array(
 				'title'     => __( 'SKU Generator for WooCommerce', 'sku-for-woocommerce' ),
 				'desc'      => '<strong>' . __( 'Enable plugin', 'sku-for-woocommerce' ) . '</strong>',
-				'desc_tip'  => __( 'Add full SKU support to WooCommerce.', 'sku-for-woocommerce' ),
+				'desc_tip'  => 
+					__( 'SKU Generator for WooCommerce', 'sku-for-woocommerce' )
+					. ' v' . WPWHAM_SKU_GENERATOR_VERSION . '.<br />'
+					. '<a href="https://wpwham.com/documentation/sku-generator-for-woocommerce/?utm_source=documentation_link&utm_campaign=free&utm_medium=sku_generator" target="_blank" class="button">' .
+					__( 'Documentation', 'sku-for-woocommerce' ) . '</a>',
 				'id'        => 'alg_sku_for_woocommerce_enabled',
 				'default'   => 'yes',
 				'type'      => 'checkbox',
