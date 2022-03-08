@@ -117,7 +117,7 @@ final class Alg_WooCommerce_SKU {
 		$custom_links = array();
 		$custom_links[] = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_sku' ) . '">' . __( 'Settings', 'woocommerce' ) . '</a>';
 		if ( 'sku-for-woocommerce.php' === basename( __FILE__ ) ) {
-			$custom_links[] = '<a target="_blank" href="' . esc_url( 'https://wpwham.com/products/sku-generator-for-woocommerce/' ) . '">' .
+			$custom_links[] = '<a target="_blank" href="' . esc_url( 'https://wpwham.com/products/sku-generator-for-woocommerce/?utm_source=plugins_page&utm_campaign=free&utm_medium=sku_generator' ) . '">' .
 				__( 'Unlock all', 'sku-for-woocommerce' ) . '</a>';
 		}
 		return array_merge( $custom_links, $links );

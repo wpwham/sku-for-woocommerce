@@ -55,7 +55,7 @@ class Alg_WC_SKU_Settings_Categories extends Alg_WC_SKU_Settings_Section {
 				'type'      => 'checkbox',
 				'desc_tip'  => apply_filters( 'alg_wc_sku_generator_option', sprintf(
 						__( 'Get <a target="_blank" href="%s">SKU Generator for WooCommerce Pro</a> plugin to enable this option.', 'sku-for-woocommerce' ),
-						'https://wpwham.com/products/sku-generator-for-woocommerce/'
+						'https://wpwham.com/products/sku-generator-for-woocommerce/?utm_source=settings_categories_sequential_numbering&utm_campaign=free&utm_medium=sku_generator'
 					), 'settings'
 				),
 				'custom_attributes' => apply_filters( 'alg_wc_sku_generator_option', array( 'disabled' => 'disabled' ), 'settings' ),
@@ -69,7 +69,7 @@ class Alg_WC_SKU_Settings_Categories extends Alg_WC_SKU_Settings_Section {
 				'desc_tip'  => __( 'Yoast SEO adds the ability to mark a category as "primary". Normally when a product has multiple categories we use only the first one. With this option enabled, we will instead use the one identified by Yoast as "primary", if set.', 'sku-for-woocommerce' ) .
 					apply_filters( 'alg_wc_sku_generator_option', sprintf(
 						'<br />' . __( 'Get <a target="_blank" href="%s">SKU Generator for WooCommerce Pro</a> plugin to enable this option.', 'sku-for-woocommerce' ),
-						'https://wpwham.com/products/sku-generator-for-woocommerce/'
+						'https://wpwham.com/products/sku-generator-for-woocommerce/?utm_source=settings_categories_yoast&utm_campaign=free&utm_medium=sku_generator'
 					), 'settings'
 				),
 				'custom_attributes' => apply_filters( 'alg_wc_sku_generator_option', array( 'disabled' => 'disabled' ), 'settings' ),

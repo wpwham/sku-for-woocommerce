@@ -68,7 +68,7 @@ class Alg_WC_SKU_Settings_General extends Alg_WC_SKU_Settings_Section {
 				'desc_tip'  => __( 'Possible values: from product ID, sequential or pseudorandom.', 'sku-for-woocommerce' ),
 				'desc'      => apply_filters( 'alg_wc_sku_generator_option', sprintf(
 						__( 'Get <a target="_blank" href="%s">SKU Generator for WooCommerce Pro</a> to add even more options.', 'sku-for-woocommerce' ),
-						'https://wpwham.com/products/sku-generator-for-woocommerce/'
+						'https://wpwham.com/products/sku-generator-for-woocommerce/?utm_source=settings_general_number_generation&utm_campaign=free&utm_medium=sku_generator'
 					), 'settings'
 				),
 				'custom_attributes' => apply_filters( 'alg_wc_sku_generator_option', array( 'disabled' => 'disabled' ), 'settings' ),
@@ -111,7 +111,7 @@ class Alg_WC_SKU_Settings_General extends Alg_WC_SKU_Settings_Section {
 				'desc_tip'  => __( 'Possible values: SKU same as parent\'s product, generate different SKU for each variation or SKU same as parent\'s product + variation suffix.', 'sku-for-woocommerce' ),
 				'desc'      => apply_filters( 'alg_wc_sku_generator_option', sprintf(
 						__( 'Get <a target="_blank" href="%s">SKU Generator for WooCommerce Pro</a> to add even more options.', 'sku-for-woocommerce' ),
-						'https://wpwham.com/products/sku-generator-for-woocommerce/'
+						'https://wpwham.com/products/sku-generator-for-woocommerce/?utm_source=settings_general_variations_handling&utm_campaign=free&utm_medium=sku_generator'
 					), 'settings'
 				),
 				'custom_attributes' => apply_filters( 'alg_wc_sku_generator_option', array( 'disabled' => 'disabled' ), 'settings' ),
