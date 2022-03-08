@@ -2,8 +2,8 @@
 Contributors: wpwham
 Tags: woocommerce, sku, stock keeping unit, generate sku, generate
 Requires at least: 4.4
-Tested up to: 5.7
-Stable tag: 1.5.1
+Tested up to: 5.9
+Stable tag: 1.6.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,6 +47,11 @@ Add full SKU support to WooCommerce:
 5. SKU Generator for WooCommerce - SKU Regenerator Tool.
 
 == Changelog ==
+
+= 1.6.0 - 2022-03-07 =
+* NEW: add filter 'wpwham_sku_sku_template_variables'. This filter will be useful for creating your own SKU template variables using custom code.
+* UPDATE: PHP 8 now officially supported.
+* UPDATE: updated .pot file for translations.
 
 = 1.5.1 - 2021-04-12 =
 * UPDATE: bump tested versions

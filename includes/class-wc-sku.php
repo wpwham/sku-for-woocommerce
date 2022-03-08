@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce
  *
- * @version 1.5.0
+ * @version 1.6.0
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -476,7 +476,8 @@ class Alg_WC_SKU {
 	/**
 	 * set_sku.
 	 *
-	 * @version 1.5.0
+	 * @version 1.6.0
+	 * @since   1.0.0
 	 */
 	public function set_sku( $product_id, $sku_number, $variation_suffix, $is_preview, $parent_product_id, $_product ) {
 		
