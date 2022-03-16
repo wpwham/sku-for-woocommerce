@@ -322,7 +322,7 @@ class Alg_WC_SKU {
 	 * @author David Grant
 	 */
 	public function set_variations_skus_by_product_id_filter( $template ) {
-		$variation_handling = apply_filters( 'alg_wc_sku_generator_option', 'as_variable', 'variations_handling' );
+		$variation_handling = get_option( 'alg_sku_for_woocommerce_variations_handling', 'as_variable' );
 		if ( in_array( $variation_handling, array( 'as_variable', 'as_variable_with_suffix' ) ) ) {
 			$template = str_ireplace( 
 				array( '{category_prefix}', '{category_suffix}', '{category_slug}', '{category_name}', '{tag_prefix}', '{tag_suffix}', '{tag_slug}', '{tag_name}', '{prefix}', '{suffix}' ), // remove everything except {variation_suffix}, {sku_number}
@@ -417,12 +417,14 @@ class Alg_WC_SKU {
 	 * @author  Algoritmika Ltd.
 	 * @author  David Grant
 	 */
-	public function set_sku_with_variable( $product_id, $is_preview, $overwrite_existing_sku = true ) {
+	public function set_sku_with_variable( $product_id, $is_preview, $overwrite_parent_sku = true ) {
+		
+		$empty_skus_only = get_option( 'alg_sku_generate_only_for_empty_sku', 'no' ) === 'yes';
 		
 		$product    = wc_get_product( $product_id );
 		$sku_number = $product->get_sku();
 		
-		if ( $overwrite_existing_sku || $sku_number === '' ) {
+		if ( $overwrite_parent_sku || $sku_number === '' ) {
 			if ( 'sequential' === apply_filters( 'alg_wc_sku_generator_option', 'product_id', 'number_generation' ) ) {
 				$sku_number = $this->get_and_icrease_sequential_counter( $product_id );
 			} elseif ( 'hash_crc32' === apply_filters( 'alg_wc_sku_generator_option', 'product_id', 'number_generation' ) ) {
@@ -434,42 +436,27 @@ class Alg_WC_SKU {
 		}
 		
 		// Handling variable products
-		$variation_handling = apply_filters( 'alg_wc_sku_generator_option', 'as_variable', 'variations_handling' );
+		$variation_handling = get_option( 'alg_sku_for_woocommerce_variations_handling', 'as_variable' );
 		if ( $product->is_type( 'variable' ) ) {
 			$variations = $this->get_all_variations( $product );
+			
+			// SKU same as parent's product
 			if ( 'as_variable' === $variation_handling ) {
 				foreach( $variations as $variation ) {
 					$this->set_sku( $variation['variation_id'], $sku_number, '', $is_preview, $product_id, new WC_Product_Variation( $variation['variation_id'] ) );
 				}
+				
+			// Generate different SKU for each variation
 			} elseif ( 'as_variation' === $variation_handling ) {
+				
 				foreach( $variations as $variation ) {
-					if ( 'sequential' === apply_filters( 'alg_wc_sku_generator_option', 'product_id', 'number_generation' ) ) {
-						$sku_number = $this->get_and_icrease_sequential_counter( $product_id );
-					} elseif ( 'hash_crc32' === apply_filters( 'alg_wc_sku_generator_option', 'product_id', 'number_generation' ) ) {
-						$sku_number = sprintf( "%u", crc32( $variation['variation_id'] ) );
-					} else { // if 'product_id'
-						$sku_number = $variation['variation_id'];
-					}
+					// from 'product_id'
+					$sku_number = $variation['variation_id'];
 					$this->set_sku( $variation['variation_id'], $sku_number, '', $is_preview, $product_id, new WC_Product_Variation( $variation['variation_id'] ) );
 				}
-			} elseif ( 'as_variable_with_suffix' === $variation_handling ) {
-				$variation_suffix_type = get_option( 'wpw_sku_generator_variation_suffix', 'letters' );
-				$count = 0;
-				foreach ( $variations as $variation ) {
-					if ( $variation_suffix_type === 'numbers' ) {
-						// numbers
-						$variation_suffix = sprintf( '%0' . get_option( 'wpw_sku_generator_variation_suffix_minimum_number_length', 0 ) . 's', $count + 1 );
-					} else {
-						// letters
-						$n = $count;
-						for ( $variation_suffix = ""; $n >= 0; $n = intval( $n / 26 ) - 1 ) {
-							$variation_suffix = chr( $n % 26 + 0x61 ) . $variation_suffix;
-						}
-					}
-					$this->set_sku( $variation['variation_id'], $sku_number, $variation_suffix, $is_preview, $product_id, new WC_Product_Variation( $variation['variation_id'] ) );
-					$count++;
-				}
+				
 			}
+			
 		}
 	}
 
