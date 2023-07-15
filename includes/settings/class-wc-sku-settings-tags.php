@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce - Tags Section Settings
  *
- * @version 1.4.1
+ * @version 1.6.1
  * @since   1.2.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham

@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce
  *
- * @version 1.6.0
+ * @version 1.6.1
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -305,7 +305,7 @@ class Alg_WC_SKU {
 	 * Set Variations SKUs by product ID
 	 *
 	 * @since  1.4.0
-	 * @author David Grant
+	 * @author WP Wham
 	 */
 	public function set_variations_skus_by_product_id( $product_id, $is_preview = false ) {
 		$this->maybe_load_sequential_counter();
@@ -318,8 +318,9 @@ class Alg_WC_SKU {
 	/**
 	 * set_variations_skus_by_product_id_filter
 	 *
-	 * @since  1.4.0
-	 * @author David Grant
+	 * @version 1.6.1
+	 * @since   1.4.0
+	 * @author  WP Wham
 	 */
 	public function set_variations_skus_by_product_id_filter( $template ) {
 		$variation_handling = get_option( 'alg_sku_for_woocommerce_variations_handling', 'as_variable' );
@@ -413,9 +414,9 @@ class Alg_WC_SKU {
 	/**
 	 * set_sku_with_variable.
 	 *
-	 * @version 1.4.0
+	 * @version 1.6.1
 	 * @author  Algoritmika Ltd.
-	 * @author  David Grant
+	 * @author  WP Wham
 	 */
 	public function set_sku_with_variable( $product_id, $is_preview, $overwrite_parent_sku = true ) {
 		

@@ -2,9 +2,10 @@
 /**
  * SKU for WooCommerce - Regenerator Tool
  *
- * @version 1.2.0
+ * @version 1.6.1
  * @since   1.0.0
  * @author  Algoritmika Ltd.
+ * @author  WP Wham
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

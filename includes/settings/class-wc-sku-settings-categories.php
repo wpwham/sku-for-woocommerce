@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce - Categories Section Settings
  *
- * @version 1.6.0
+ * @version 1.6.1
  * @since   1.2.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
