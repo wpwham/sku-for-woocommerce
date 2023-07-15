@@ -12,7 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'Alg_WC_SKU_Tools_Regenerator' ) ) :
 
 class Alg_WC_SKU_Tools_Regenerator {
-
+	
+	public $id   = '';
+	public $desc = '';
+	
 	/**
 	 * Constructor.
 	 *

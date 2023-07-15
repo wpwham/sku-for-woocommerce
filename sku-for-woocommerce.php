@@ -50,7 +50,10 @@ if ( ! class_exists( 'Alg_WooCommerce_SKU' ) ) :
  * @since   1.0.0
  */
 final class Alg_WooCommerce_SKU {
-
+	
+	public $core     = null;
+	public $settings = null;
+	
 	/**
 	 * Plugin version.
 	 *
