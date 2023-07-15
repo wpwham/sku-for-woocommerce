@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce - General Section Settings
  *
- * @version 1.6.0
+ * @version 1.6.1
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -13,7 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'Alg_WC_SKU_Settings_General' ) ) :
 
 class Alg_WC_SKU_Settings_General extends Alg_WC_SKU_Settings_Section {
-
+	
+	public $id   = '';
+	public $desc = '';
+	
 	/**
 	 * Constructor.
 	 *
@@ -28,7 +31,7 @@ class Alg_WC_SKU_Settings_General extends Alg_WC_SKU_Settings_Section {
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.6.0
+	 * @version 1.6.1
 	 * @todo    [dev] (maybe) "SKU Format Options" etc. to separate section (and then also add "Dashboard" subsection)
 	 */
 	public static function get_settings() {
@@ -111,6 +114,7 @@ class Alg_WC_SKU_Settings_General extends Alg_WC_SKU_Settings_Section {
 				'class'     => 'wc-enhanced-select',
 				'options'   => array(
 					'as_variable'             => __( 'SKU same as parent\'s product', 'sku-for-woocommerce' ),
+					'as_variation'            => __( 'Generate different SKU for each variation', 'sku-for-woocommerce' ),
 				),
 				'desc_tip'  => __( 'Possible values: SKU same as parent\'s product, generate different SKU for each variation or SKU same as parent\'s product + variation suffix.', 'sku-for-woocommerce' ),
 				'desc'      => apply_filters( 'alg_wc_sku_generator_option', sprintf(
@@ -118,7 +122,6 @@ class Alg_WC_SKU_Settings_General extends Alg_WC_SKU_Settings_Section {
 						'https://wpwham.com/products/sku-generator-for-woocommerce/?utm_source=settings_general_variations_handling&utm_campaign=free&utm_medium=sku_generator'
 					), 'settings'
 				),
-				'custom_attributes' => apply_filters( 'alg_wc_sku_generator_option', array( 'disabled' => 'disabled' ), 'settings' ),
 			),
 			array(
 				'title'     => __( 'Template', 'sku-for-woocommerce' ),

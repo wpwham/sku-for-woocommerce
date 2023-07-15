@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce - Categories Section Settings
  *
- * @version 1.6.0
+ * @version 1.6.1
  * @since   1.2.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -13,7 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'Alg_WC_SKU_Settings_Categories' ) ) :
 
 class Alg_WC_SKU_Settings_Categories extends Alg_WC_SKU_Settings_Section {
-
+	
+	public $id   = '';
+	public $desc = '';
+	
 	/**
 	 * Constructor.
 	 *
