@@ -40,12 +40,12 @@ class Alg_WC_SKU_Tools_Regenerator {
 			do_action( 'alg_sku_for_woocommerce_before_regenerator_tool' );
 			$button_template = '<p>' . '<a class="button button-primary" href="%s">%s</a>' . '</p>';
 			echo sprintf( $button_template,
-				add_query_arg( 'alg_preview_sku', '', remove_query_arg( 'alg_set_sku' ) ),
+				esc_url( add_query_arg( 'alg_preview_sku', '', remove_query_arg( 'alg_set_sku' ) ) ),
 				__( 'Generate SKU preview for all products', 'sku-for-woocommerce' )
 			);
 			if ( isset( $_GET['alg_preview_sku'] ) ) {
 				echo sprintf( $button_template,
-					add_query_arg( 'alg_set_sku', '', remove_query_arg( 'alg_preview_sku' ) ),
+					esc_url( add_query_arg( 'alg_set_sku', '', remove_query_arg( 'alg_preview_sku' ) ) ),
 					__( 'Set SKUs for all products', 'sku-for-woocommerce' )
 				);
 			}
