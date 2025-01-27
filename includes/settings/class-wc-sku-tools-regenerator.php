@@ -35,23 +35,23 @@ class Alg_WC_SKU_Tools_Regenerator {
 	 * @version 1.2.0
 	 */
 	function create_sku_tool() {
-		echo '<h3>' . __( 'SKU Regenerator', 'sku-for-woocommerce' ) . '</h3>';
+		echo '<h3>' . esc_html__( 'SKU Regenerator', 'sku-for-woocommerce' ) . '</h3>';
 		if ( 'yes' === get_option( 'alg_sku_for_woocommerce_enabled', 'yes' ) ) {
 			do_action( 'alg_sku_for_woocommerce_before_regenerator_tool' );
 			$button_template = '<p>' . '<a class="button button-primary" href="%s">%s</a>' . '</p>';
 			echo sprintf( $button_template,
 				esc_url( add_query_arg( 'alg_preview_sku', '', remove_query_arg( 'alg_set_sku' ) ) ),
-				__( 'Generate SKU preview for all products', 'sku-for-woocommerce' )
+				esc_html__( 'Generate SKU preview for all products', 'sku-for-woocommerce' )
 			);
 			if ( isset( $_GET['alg_preview_sku'] ) ) {
 				echo sprintf( $button_template,
 					esc_url( add_query_arg( 'alg_set_sku', '', remove_query_arg( 'alg_preview_sku' ) ) ),
-					__( 'Set SKUs for all products', 'sku-for-woocommerce' )
+					esc_html__( 'Set SKUs for all products', 'sku-for-woocommerce' )
 				);
 			}
 			do_action( 'alg_sku_for_woocommerce_after_regenerator_tool' );
 		} else {
-			echo '<em>' . __( 'To use regenerator, SKU Generator for WooCommerce must be enabled in General settings tab.', 'sku-for-woocommerce' ) . '</em>';
+			echo '<em>' . esc_html__( 'To use regenerator, SKU Generator for WooCommerce must be enabled in General settings tab.', 'sku-for-woocommerce' ) . '</em>';
 		}
 	}
 
