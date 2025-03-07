@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce
  *
- * @version 1.6.1
+ * @version 1.6.3
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -273,7 +273,7 @@ class Alg_WC_SKU {
 	/**
 	 * set_all_sku.
 	 *
-	 * @version 1.2.2
+	 * @version 1.6.3
 	 */
 	function set_all_sku( $is_preview ) {
 		$this->maybe_load_sequential_counter();
@@ -299,6 +299,9 @@ class Alg_WC_SKU {
 			$offset += $limit;
 		}
 		$this->maybe_update_sequential_counter( $is_preview );
+		if ( ! $is_preview && function_exists( 'wc_update_product_lookup_tables' ) ) {
+			wc_update_product_lookup_tables();
+		}
 	}
 	
 	/**
