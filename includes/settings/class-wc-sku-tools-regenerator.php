@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce - Regenerator Tool
  *
- * @version 1.6.1
+ * @version 1.6.3
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -32,7 +32,7 @@ class Alg_WC_SKU_Tools_Regenerator {
 	/**
 	 * create_sku_tool.
 	 *
-	 * @version 1.2.0
+	 * @version 1.6.3
 	 */
 	function create_sku_tool() {
 		echo '<h3>' . esc_html__( 'SKU Regenerator', 'sku-for-woocommerce' ) . '</h3>';

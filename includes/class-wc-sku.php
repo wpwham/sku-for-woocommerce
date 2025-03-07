@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce
  *
- * @version 1.6.1
+ * @version 1.6.3
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -273,7 +273,7 @@ class Alg_WC_SKU {
 	/**
 	 * set_all_sku.
 	 *
-	 * @version 1.2.2
+	 * @version 1.6.3
 	 */
 	function set_all_sku( $is_preview ) {
 		$this->maybe_load_sequential_counter();
