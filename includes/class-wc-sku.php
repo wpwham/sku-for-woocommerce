@@ -299,8 +299,7 @@ class Alg_WC_SKU {
 			$offset += $limit;
 		}
 		$this->maybe_update_sequential_counter( $is_preview );
-		
-		if ( ! $is_preview ) {
+		if ( ! $is_preview && function_exists( 'wc_update_product_lookup_tables' ) ) {
 			wc_update_product_lookup_tables();
 		}
 	}
