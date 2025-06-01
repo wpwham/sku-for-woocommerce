@@ -96,7 +96,7 @@ final class Alg_WooCommerce_SKU {
 	function __construct() {
 
 		// Set up localisation
-		load_plugin_textdomain( 'sku-for-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
+		add_action( 'init', array( $this, 'load_localization' ) );
 
 		// Include required files
 		$this->includes();
@@ -116,6 +116,13 @@ final class Alg_WooCommerce_SKU {
 			
 		}
 
+	}
+			
+	/**
+	 * @since   1.6.4
+	 */
+	public function load_localization() {
+		load_plugin_textdomain( 'sku-for-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
 	}
 
 	/**
