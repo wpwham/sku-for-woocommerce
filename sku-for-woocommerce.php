@@ -3,7 +3,7 @@
 Plugin Name: SKU Generator for WooCommerce
 Plugin URI: https://wpwham.com/products/sku-generator-for-woocommerce/
 Description: Add full SKU support to WooCommerce.
-Version: 1.6.3
+Version: 1.6.4
 Author: WP Wham
 Author URI: https://wpwham.com
 Text Domain: sku-for-woocommerce
@@ -37,7 +37,7 @@ if ( 'sku-for-woocommerce.php' === basename( __FILE__ ) ) {
 }
 
 if ( ! defined( 'WPWHAM_SKU_GENERATOR_VERSION' ) ) {
-	define( 'WPWHAM_SKU_GENERATOR_VERSION', '1.6.3' );
+	define( 'WPWHAM_SKU_GENERATOR_VERSION', '1.6.4' );
 }
 
 add_action( 'before_woocommerce_init', function() {
@@ -51,7 +51,7 @@ if ( ! class_exists( 'Alg_WooCommerce_SKU' ) ) :
 /**
  * Main Alg_WooCommerce_SKU Class
  *
- * @version 1.6.3
+ * @version 1.6.4
  * @since   1.0.0
  */
 final class Alg_WooCommerce_SKU {
@@ -65,7 +65,7 @@ final class Alg_WooCommerce_SKU {
 	 * @var   string
 	 * @since 1.1.2
 	 */
-	public $version = '1.6.3';
+	public $version = '1.6.4';
 
 	/**
 	 * @var Alg_WooCommerce_SKU The single instance of the class
@@ -90,13 +90,13 @@ final class Alg_WooCommerce_SKU {
 	/**
 	 * Alg_WooCommerce_SKU Constructor.
 	 *
-	 * @version 1.4.1
+	 * @version 1.6.4
 	 * @access  public
 	 */
 	function __construct() {
 
 		// Set up localisation
-		load_plugin_textdomain( 'sku-for-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
+		add_action( 'init', array( $this, 'load_localization' ) );
 
 		// Include required files
 		$this->includes();
@@ -116,6 +116,13 @@ final class Alg_WooCommerce_SKU {
 			
 		}
 
+	}
+			
+	/**
+	 * @since   1.6.4
+	 */
+	public function load_localization() {
+		load_plugin_textdomain( 'sku-for-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
 	}
 
 	/**
