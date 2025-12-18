@@ -108,6 +108,8 @@ final class Alg_WooCommerce_SKU {
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
 			$this->add_settings();
 			add_action( 'woocommerce_system_status_report', array( $this, 'add_settings_to_status_report' ) );
+			// Review suggestion
+			require_once( 'includes/class-alg-wc-sku-review.php' );
 			
 			// Version updated
 			if ( get_option( 'alg_sku_generator_version', '' ) !== $this->version ) {
