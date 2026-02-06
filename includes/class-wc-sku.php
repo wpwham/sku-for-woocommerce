@@ -241,7 +241,7 @@ class Alg_WC_SKU {
 			$this->sequential_counter = get_option( 'alg_sku_for_woocommerce_number_generation_sequential', 1 );
 			if ( 'yes' === get_option( 'alg_sku_categories_enabled', 'no' ) && 'yes' === apply_filters( 'alg_wc_sku_generator_option', 'no', 'categories_sequential' ) ) {
 				$products_terms = get_terms( 'product_cat', 'orderby=name&hide_empty=0' );
-				if ( ! empty( $products_terms ) && ! is_wp_error( $products_terms ) ){
+				if ( ! empty( $products_terms ) && ! is_wp_error( $products_terms ) ) {
 					foreach ( $products_terms as $products_term ) {
 						$this->sequential_counter_cats[ $products_term->term_id ] = get_option( 'alg_sku_sequential_cat_' . $products_term->term_id, 1 );
 					}
@@ -261,7 +261,7 @@ class Alg_WC_SKU {
 			update_option( 'alg_sku_for_woocommerce_number_generation_sequential', $this->sequential_counter );
 			if ( 'yes' === get_option( 'alg_sku_categories_enabled', 'no' ) && 'yes' === apply_filters( 'alg_wc_sku_generator_option', 'no', 'categories_sequential' ) ) {
 				$products_terms = get_terms( 'product_cat', 'orderby=name&hide_empty=0' );
-				if ( ! empty( $products_terms ) && ! is_wp_error( $products_terms ) ){
+				if ( ! empty( $products_terms ) && ! is_wp_error( $products_terms ) ) {
 					foreach ( $products_terms as $products_term ) {
 						update_option( 'alg_sku_sequential_cat_' . $products_term->term_id, $this->sequential_counter_cats[ $products_term->term_id ] );
 					}
