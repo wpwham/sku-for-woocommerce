@@ -20,7 +20,10 @@ class Alg_WC_Settings_SKU extends WC_Settings_Page {
 	 */
 	function __construct() {
 		$this->id    = 'alg_sku';
-		$this->label = __( 'SKU', 'sku-for-woocommerce' );
+		$this->label = 'SKU';
+		add_action( 'init', function() {
+			$this->label = __( 'SKU', 'sku-for-woocommerce' );
+		} );
 		parent::__construct();
 		add_filter( 'woocommerce_admin_settings_sanitize_option', array( $this, 'maybe_unsanitize_option' ), PHP_INT_MAX, 3 );
 	}

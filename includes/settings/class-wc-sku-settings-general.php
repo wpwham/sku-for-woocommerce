@@ -24,7 +24,10 @@ class Alg_WC_SKU_Settings_General extends Alg_WC_SKU_Settings_Section {
 	 */
 	function __construct() {
 		$this->id   = '';
-		$this->desc = __( 'General', 'sku-for-woocommerce' );
+		$this->desc = 'General';
+		add_action( 'init', function() {
+			$this->desc = __( 'General', 'sku-for-woocommerce' );
+		} );
 		parent::__construct();
 	}
 

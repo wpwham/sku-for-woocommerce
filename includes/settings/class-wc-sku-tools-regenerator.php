@@ -24,7 +24,10 @@ class Alg_WC_SKU_Tools_Regenerator {
 	 */
 	function __construct() {
 		$this->id   = 'regenerator';
-		$this->desc = __( 'Regenerator Tool', 'sku-for-woocommerce' );
+		$this->desc = 'Regenerator Tool';
+		add_action( 'init', function() {
+			$this->desc = __( 'Regenerator Tool', 'sku-for-woocommerce' );
+		} );
 		add_filter( 'woocommerce_get_sections_alg_sku',         array( $this, 'settings_section' ) );
 		add_action( 'alg_sku_for_woocommerce_regenerator_tool', array( $this, 'create_sku_tool' ) );
 	}

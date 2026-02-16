@@ -25,7 +25,10 @@ class Alg_WC_SKU_Settings_Tags extends Alg_WC_SKU_Settings_Section {
 	 */
 	function __construct() {
 		$this->id   = 'tags';
-		$this->desc = __( 'Tags', 'sku-for-woocommerce' );
+		$this->desc = 'Tags';
+		add_action( 'init', function() {
+			$this->desc = __( 'Tags', 'sku-for-woocommerce' );
+		} );
 		parent::__construct();
 	}
 

@@ -25,7 +25,10 @@ class Alg_WC_SKU_Settings_Categories extends Alg_WC_SKU_Settings_Section {
 	 */
 	function __construct() {
 		$this->id   = 'categories';
-		$this->desc = __( 'Categories', 'sku-for-woocommerce' );
+		$this->desc = 'Categories';
+		add_action( 'init', function() {
+			$this->desc = __( 'Categories', 'sku-for-woocommerce' );
+		} );
 		parent::__construct();
 	}
 
