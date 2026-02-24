@@ -93,7 +93,7 @@ final class Alg_WooCommerce_SKU {
 	 * @version 1.6.4
 	 * @access  public
 	 */
-	function __construct() {
+	public function __construct() {
 		
 		add_action( 'init', array( $this, 'includes' ) );
 
@@ -133,7 +133,7 @@ final class Alg_WooCommerce_SKU {
 	 *
 	 * @version 1.2.2
 	 */
-	function includes() {
+	public function includes() {
 		// Localization
 		load_plugin_textdomain( 'sku-for-woocommerce', false, dirname( plugin_basename( __FILE__ ) ) . '/langs/' );
 		// Core
