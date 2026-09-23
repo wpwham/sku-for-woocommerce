@@ -79,7 +79,7 @@ class Alg_WC_SKU_Settings_Categories extends Alg_WC_SKU_Settings_Section {
 			),
 		) );
 		$products_terms = get_terms( 'product_cat', 'orderby=name&hide_empty=0' );
-		if ( ! empty( $products_terms ) && ! is_wp_error( $products_terms ) ){
+		if ( ! empty( $products_terms ) && ! is_wp_error( $products_terms ) ) {
 			foreach ( $products_terms as $products_term ) {
 				$settings = array_merge( $settings, array(
 					array(
