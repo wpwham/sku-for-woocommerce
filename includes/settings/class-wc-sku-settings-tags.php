@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce - Tags Section Settings
  *
- * @version 1.6.1
+ * @version 1.6.6
  * @since   1.2.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -32,7 +32,7 @@ class Alg_WC_SKU_Settings_Tags extends Alg_WC_SKU_Settings_Section {
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.4.1
+	 * @version 1.6.6
 	 * @since   1.2.0
 	 */
 	public static function get_settings() {
@@ -52,7 +52,7 @@ class Alg_WC_SKU_Settings_Tags extends Alg_WC_SKU_Settings_Section {
 			),
 		) );
 		$products_terms = get_terms( 'product_tag', 'orderby=name&hide_empty=0' );
-		if ( ! empty( $products_terms ) && ! is_wp_error( $products_terms ) ){
+		if ( ! empty( $products_terms ) && ! is_wp_error( $products_terms ) ) {
 			foreach ( $products_terms as $products_term ) {
 				$settings = array_merge( $settings, array(
 					array(
