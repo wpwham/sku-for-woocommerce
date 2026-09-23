@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce
  *
- * @version 1.6.3
+ * @version 1.6.6
  * @since   1.0.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -233,7 +233,7 @@ class Alg_WC_SKU {
 	/**
 	 * maybe_load_sequential_counter.
 	 *
-	 * @version 1.2.2
+	 * @version 1.6.6
 	 * @since   1.2.2
 	 */
 	function maybe_load_sequential_counter() {
@@ -253,7 +253,7 @@ class Alg_WC_SKU {
 	/**
 	 * maybe_update_sequential_counter.
 	 *
-	 * @version 1.2.2
+	 * @version 1.6.6
 	 * @since   1.2.2
 	 */
 	function maybe_update_sequential_counter( $is_preview ) {

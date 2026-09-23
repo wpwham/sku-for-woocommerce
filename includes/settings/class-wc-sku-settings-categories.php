@@ -2,7 +2,7 @@
 /**
  * SKU for WooCommerce - Categories Section Settings
  *
- * @version 1.6.1
+ * @version 1.6.6
  * @since   1.2.0
  * @author  Algoritmika Ltd.
  * @author  WP Wham
@@ -32,7 +32,7 @@ class Alg_WC_SKU_Settings_Categories extends Alg_WC_SKU_Settings_Section {
 	/**
 	 * get_settings.
 	 *
-	 * @version 1.6.0
+	 * @version 1.6.6
 	 * @since   1.2.0
 	 */
 	public static function get_settings() {
