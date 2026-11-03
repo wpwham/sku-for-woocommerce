@@ -344,6 +344,7 @@ class Alg_WC_SKU {
 	 * @since   1.1.3
 	 */
 	function set_new_product_sku_on_duplicate( $post_ID, $post ) {
+		update_post_meta( $post_ID, '_sku', '' );
 		$this->set_new_product_sku( $post_ID );
 	}
 
