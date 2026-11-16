@@ -101,7 +101,9 @@ final class Alg_WooCommerce_SKU {
 		add_action( 'woocommerce_system_status_report', array( $this, 'add_settings_to_status_report' ) );
 		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_woocommerce_settings_tab' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'action_links' ) );
-
+		// Review suggestion
+		require_once( 'includes/class-wpwham-sku-generator-review.php' );
+		
 		// Updates
 		if ( get_option( 'alg_sku_generator_version', '' ) !== $this->version ) {
 			add_action( 'admin_init', array( $this, 'version_updated' ) );

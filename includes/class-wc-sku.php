@@ -570,6 +570,9 @@ class Alg_WC_SKU {
 			'</tr>';
 		} elseif ( $do_generate_new_sku ) {
 			update_post_meta( $product_id, '_' . 'sku', $the_sku );
+			if ( 'yes' !== get_option( 'wpwham_sku_generator_has_generated', 'no' ) ) {
+				update_option( 'wpwham_sku_generator_has_generated', 'yes', false );
+			}
 		}
 	}
 
